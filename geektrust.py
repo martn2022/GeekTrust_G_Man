@@ -1,76 +1,36 @@
-from sys import argv
-opposites_hash = {'N': 'S','S': 'N','E': 'W','W': 'E'}
+"""
 
-def main():
-    if len(argv) != 2:
-        raise Exception("ERROR: We want 1. the function file and 2. the input file")
 
-    file_path = argv[1]
-    f = open(file_path, 'r')
-    lines_taken_in = f.readlines()
+"""
 
-    for each_line in lines_taken_in:
-        tokens = each_line.split()
+class robot:
+    def __init__(self, beginning_position, direction_facing, beginning_energy_level):
+        ##at any given moment, the robot needs 3 known attributes - positional coordinates on the grid, direction, and energy level
+        self.position = beginning_position
+        self.direction_facing = direction_facing
+        self.energy_level = beginning_energy_level
 
-        if tokens[0] == "SOURCE":
-            source_x = int(tokens[1])
-            source_y = int(tokens[2])
-            facing = tokens[3]
+    def discover_destination(self):
+        pass
 
-        elif tokens[0] == "DESTINATION":
-            destination_x = int(tokens[1])
-            destination_y = int(tokens[2])
+    def rotate(self):
+        pass
 
-        else:
-            print ("POWER",(200-calculate_cost(source_x, source_y, facing, destination_x, destination_y)))
+    def walk_forward(self):
+        pass
 
-def calculate_cost(starting_x, starting_y, starting_direction, ending_x, ending_y):
-    overall_direction = ""
-    if ending_y - starting_y >0:
-        overall_direction += "N"
-    elif ending_y - starting_y <0:
-        overall_direction += "S"
-    else:
-        overall_direction += "Z"
 
-    if ending_x - starting_x >0:
-        overall_direction += "E"
-    elif ending_y - starting_y <0:
-        overall_direction += "W"
-    else:
-        overall_direction += "Z"
 
-    turns = 0
 
-    if starting_direction == "N" or starting_direction == "S":
-        if overall_direction[0] == opposites_hash[starting_direction]:
-            turns = 2
-        elif overall_direction[0] == "Z":
-            turns == 1
-        else:
-            if overall_direction[1] == "Z":
-                turns = 0
-            else:
-                turns = 1
+beginning_position_x =
+beginning_position_y =
+direction_facing = ""
+starting_energy_level = 200
+gman = robot(starting_energy_level)
 
-    else:
-        if starting_direction == "W" or starting_direction == "E":
-            if overall_direction[1] == opposites_hash[starting_direction]:
-                turns = 2
-            elif overall_direction[1] == "Z":
-                turns == 1
-            else:
-                if overall_direction[0] == "Z":
-                    turns = 0
-                else:
-                    turns = 1
-
-    return (turns*5) + (10*(abs(ending_y-starting_y)+abs(ending_x-starting_x)))
-
+## not sure why i need this IF statement
 if __name__ == "__main__":
     main()
-
-
 
 
     """
